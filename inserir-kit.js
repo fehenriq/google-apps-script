@@ -23,6 +23,37 @@ function standardKit(interval, query) {
 
   rangeHeader.copyTo(pasteHeader, { contentsOnly: false });
   rangeQuery.copyTo(pasteQuery, { contentsOnly: false });
+
+  if (query == "B14") {
+    let newRow = 3;
+    while (sheet.getRange(newRow, 3).isBlank() == false) {
+      newRow += 1;
+    }
+
+    const itemOrigin = [[`=C${row + 2}`]];
+    const produtoOrigin = [[`=C${row + 3}`]];
+    const qtdOrigin = [[`=C${row + 4}`]];
+    const tagOrigin = [[`=C${row + 5}`]];
+    const docOrigin = [[`=C${row + 6}`]];
+    const valorOrigin = [[`=J${row + 6}`]];
+    const noICMSOrigin = [[`=K${row + 6}`]];
+
+    const itemDestiny = sheet.getRange(`B${newRow}`);
+    const produtoDestiny = sheet.getRange(`C${newRow}`);
+    const qtdDestiny = sheet.getRange(`D${newRow}`);
+    const tagDestiny = sheet.getRange(`E${newRow}`);
+    const docDestiny = sheet.getRange(`F${newRow}`);
+    const valorDestiny = sheet.getRange(`I${newRow}`);
+    const noICMSDestiny = sheet.getRange(`J${newRow}`);
+
+    itemDestiny.setValues(itemOrigin);
+    produtoDestiny.setValues(produtoOrigin);
+    qtdDestiny.setValues(qtdOrigin);
+    tagDestiny.setValues(tagOrigin);
+    docDestiny.setValues(docOrigin);
+    valorDestiny.setValues(valorOrigin);
+    noICMSDestiny.setValues(noICMSOrigin);
+  }
 }
 
 function insertKit() {
